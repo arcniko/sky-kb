@@ -1,6 +1,14 @@
 # Sky Knowledge Base
 
-Local knowledge base for Sky governance documentation. Works with both Claude Code and the Claude desktop app.
+Local knowledge base for Sky governance documentation. Works with Claude Code and other AI coding agents.
+
+## Install
+
+```bash
+npx skills add arcniko/sky-kb
+```
+
+Content is downloaded automatically on first use.
 
 ## Content
 
@@ -26,40 +34,12 @@ The Atlas files use a hierarchical heading structure with formal IDs (e.g. `A.1.
 | `A.5 - The Accessibility Scope.md` | Accessibility standards |
 | `A.6 - The Agent Scope.md` | AI agent governance |
 
-## Quick Start
-
-```bash
-python3 scripts/sync.py
-```
-
-This downloads the Atlas markdown and clones/pulls the documentation repos into `content/`.
-
 ## Usage
 
-### Claude Code
+Use `/sky <question>` from any project in Claude Code:
 
-Open this folder in Claude Code:
-
-```bash
-cd sky-knowledge
-claude
+```
+/sky What is the Stability Scope?
 ```
 
-Ask governance questions directly — Claude will search across all content to find answers. Use `/sync` to fetch the latest content.
-
-### Claude Desktop App
-
-One-click installers download the content and configure Claude Desktop automatically.
-
-**Mac**: Double-click `install.command`
-
-**Windows**: Double-click `install.bat`
-
-The installer will:
-1. Clone this repo to `~/sky-kb` (or `%USERPROFILE%\sky-kb` on Windows)
-2. Download all Sky Atlas content
-3. Configure Claude Desktop's MCP filesystem server
-
-After it finishes, restart Claude Desktop. You should see "sky-knowledge" listed under the MCP tools icon (hammer).
-
-**Updating**: Double-click the installer again to pull the latest content.
+Use `/sky-sync` to fetch the latest content.

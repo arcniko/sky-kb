@@ -1,3 +1,5 @@
 content/
 .sync_state.json
 __pycache__/
+.claude/
+.DS_Store
