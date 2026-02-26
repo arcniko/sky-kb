@@ -5,7 +5,7 @@ Local knowledge base for Sky governance documentation. Works with Claude Code an
 ## Install
 
 ```bash
-npx skills add arcniko/sky-kb
+git clone https://github.com/arcniko/sky-kb.git /tmp/sky-kb && cp -r /tmp/sky-kb/skills/* ~/.claude/skills/ && rm -rf /tmp/sky-kb
 ```
 
 Content is downloaded automatically on first use.
