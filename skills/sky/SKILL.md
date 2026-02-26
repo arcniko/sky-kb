@@ -15,13 +15,13 @@ Answer the user's question using the Sky knowledge base at `~/sky-kb/content/`.
 2. If not:
    - `git clone https://github.com/arcniko/sky-kb.git ~/sky-kb`
    - `python3 ~/sky-kb/scripts/sync.py`
+3. Read `~/sky-kb/DIRECTORY.md` to understand what content sources are available
 
 ## How to search
 
 1. Grep across `~/sky-kb/content/` for keywords from the question
 2. Read the matching files to find the answer
 3. For Atlas results: also read the parent scope file for broader context
-4. For protocol questions: prioritize `~/sky-kb/content/laniakea-docs/` (current), then `~/sky-kb/content/mcd-docs-content/` (legacy)
 
 ## How to answer
 

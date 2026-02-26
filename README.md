@@ -43,3 +43,5 @@ Use `/sky <question>` from any project in Claude Code:
 ```
 
 Use `/sky-sync` to fetch the latest content.
+
+Use `/sky-add-repo <url> [name] [description]` to add a new documentation repo to the knowledge base.
