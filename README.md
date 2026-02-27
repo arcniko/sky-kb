@@ -2,11 +2,33 @@
 
 Local knowledge base for Sky governance documentation. Works with Claude Code and other AI coding agents.
 
+## Requirements
+
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (or another AI coding agent that supports skills)
+- Git
+- Python 3
+
 ## Install
+
+**macOS / Linux:**
 
 ```bash
 git clone https://github.com/arcniko/sky-kb.git /tmp/sky-kb && cp -r /tmp/sky-kb/skills/* ~/.claude/skills/ && rm -rf /tmp/sky-kb
 ```
+
+**Windows (PowerShell):**
+
+```powershell
+git clone https://github.com/arcniko/sky-kb.git $env:TEMP\sky-kb; Copy-Item -Recurse $env:TEMP\sky-kb\skills\* $HOME\.claude\skills\; Remove-Item -Recurse -Force $env:TEMP\sky-kb
+```
+
+**Manual (no terminal):**
+
+1. Download [`skills/sky/SKILL.md`](skills/sky/SKILL.md) from this repo
+2. Copy it into one of these locations:
+   - `~/.claude/skills/sky/SKILL.md` — available in all projects
+   - `<project>/.claude/skills/sky/SKILL.md` — available in one project
+   - `<project>/.agents/sky/SKILL.md` — for non-Claude agents
 
 Content is downloaded automatically on first use.
 
@@ -36,12 +58,11 @@ The Atlas files use a hierarchical heading structure with formal IDs (e.g. `A.1.
 
 ## Usage
 
-Use `/sky <question>` from any project in Claude Code:
+Use `/sky` from any project in Claude Code:
 
 ```
 /sky What is the Stability Scope?
+/sky sync
+/sky add repo <url> [name] [description]
+/sky remove repo <name>
 ```
-
-Use `/sky-sync` to fetch the latest content.
-
-Use `/sky-add-repo <url> [name] [description]` to add a new documentation repo to the knowledge base.
