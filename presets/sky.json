@@ -1,0 +1,213 @@
+{
+  "name": "Sky",
+  "description": "Sky Protocol governance and technical documentation",
+  "repo": "https://github.com/arcniko/sky-kb.git",
+  "atlas": {
+    "url": "https://sky-atlas.io/api/atlas.md?split-by-scope",
+    "repo": "https://github.com/sky-ecosystem/next-gen-atlas.git"
+  },
+  "categories": [
+    {
+      "id": "laniakea",
+      "name": "Laniakea (Core)",
+      "description": "Current core work on the Sky Protocol",
+      "repos": [
+        {
+          "name": "laniakea-docs",
+          "url": "https://github.com/sky-ecosystem/laniakea-docs.git",
+          "description": "Laniakea — current core work on the Sky Protocol"
+        },
+        {
+          "name": "diamond-pau",
+          "url": "https://github.com/sky-ecosystem/diamond-pau.git",
+          "description": "Diamond PAU implementation"
+        },
+        {
+          "name": "identity-network",
+          "url": "https://github.com/sky-ecosystem/identity-network.git",
+          "description": "Identity Network contracts"
+        },
+        {
+          "name": "nfat",
+          "url": "https://github.com/sky-ecosystem/nfat.git",
+          "description": "Non-Fungible Asset Token (NFAT)"
+        },
+        {
+          "name": "pas",
+          "url": "https://github.com/sky-ecosystem/pas.git",
+          "description": "Protocol Auxiliary System (PAS)"
+        }
+      ]
+    },
+    {
+      "id": "core-protocol",
+      "name": "Core Protocol",
+      "description": "Maker/Sky core smart contracts and modules",
+      "repos": [
+        {
+          "name": "mcd-docs-content",
+          "url": "https://github.com/sky-ecosystem/mcd-docs-content.git",
+          "description": "Maker Protocol (MCD) technical documentation"
+        },
+        {
+          "name": "dss",
+          "url": "https://github.com/sky-ecosystem/dss.git",
+          "description": "Dai Stablecoin System (DSS) core contracts"
+        },
+        {
+          "name": "dss-flappers",
+          "url": "https://github.com/sky-ecosystem/dss-flappers.git",
+          "description": "DSS surplus auction (flap) contracts"
+        },
+        {
+          "name": "exchange-callees",
+          "url": "https://github.com/sky-ecosystem/exchange-callees.git",
+          "description": "Exchange callee contracts for auctions"
+        },
+        {
+          "name": "vote-delegate",
+          "url": "https://github.com/sky-ecosystem/vote-delegate.git",
+          "description": "Vote delegation contracts"
+        },
+        {
+          "name": "lockstake",
+          "url": "https://github.com/sky-ecosystem/lockstake.git",
+          "description": "Lock and stake contracts"
+        },
+        {
+          "name": "rates-conv",
+          "url": "https://github.com/sky-ecosystem/rates-conv.git",
+          "description": "Rate conversion utilities"
+        },
+        {
+          "name": "stusds",
+          "url": "https://github.com/sky-ecosystem/stusds.git",
+          "description": "Staked USDS token contracts"
+        },
+        {
+          "name": "sp-beam",
+          "url": "https://github.com/sky-ecosystem/sp-beam.git",
+          "description": "Stability Pool Beam"
+        },
+        {
+          "name": "dss-test",
+          "url": "https://github.com/sky-ecosystem/dss-test.git",
+          "description": "DSS testing utilities"
+        },
+        {
+          "name": "chief",
+          "url": "https://github.com/sky-ecosystem/chief.git",
+          "description": "DSChief governance contract"
+        },
+        {
+          "name": "dss-auto-line",
+          "url": "https://github.com/sky-ecosystem/dss-auto-line.git",
+          "description": "Automatic debt ceiling adjustment"
+        }
+      ]
+    },
+    {
+      "id": "migration",
+      "name": "Migration",
+      "description": "Migration tools and contracts",
+      "repos": [
+        {
+          "name": "chief-migration",
+          "url": "https://github.com/sky-ecosystem/chief-migration.git",
+          "description": "Chief migration contracts"
+        }
+      ]
+    },
+    {
+      "id": "endgame",
+      "name": "Endgame / Staking",
+      "description": "Endgame toolkit and staking infrastructure",
+      "repos": [
+        {
+          "name": "endgame-toolkit",
+          "url": "https://github.com/sky-ecosystem/endgame-toolkit.git",
+          "description": "Endgame toolkit contracts"
+        }
+      ]
+    },
+    {
+      "id": "keepers",
+      "name": "Keepers",
+      "description": "Keeper bots and automation",
+      "repos": [
+        {
+          "name": "chief-keeper",
+          "url": "https://github.com/sky-ecosystem/chief-keeper.git",
+          "description": "Governance chief keeper bot"
+        },
+        {
+          "name": "cage-keeper",
+          "url": "https://github.com/sky-ecosystem/cage-keeper.git",
+          "description": "Emergency shutdown keeper bot"
+        }
+      ]
+    },
+    {
+      "id": "governance",
+      "name": "Governance",
+      "description": "Governance tools, spells, and community resources",
+      "repos": [
+        {
+          "name": "spells-mainnet",
+          "url": "https://github.com/sky-ecosystem/spells-mainnet.git",
+          "description": "Mainnet governance spell contracts"
+        },
+        {
+          "name": "protego",
+          "url": "https://github.com/sky-ecosystem/protego.git",
+          "description": "Protego governance safeguard"
+        },
+        {
+          "name": "executive-votes",
+          "url": "https://github.com/sky-ecosystem/executive-votes.git",
+          "description": "Executive vote history and records"
+        },
+        {
+          "name": "dss-exec-lib",
+          "url": "https://github.com/sky-ecosystem/dss-exec-lib.git",
+          "description": "DSS executive spell library"
+        },
+        {
+          "name": "governance-portal-v2",
+          "url": "https://github.com/sky-ecosystem/governance-portal-v2.git",
+          "description": "Governance portal web application"
+        },
+        {
+          "name": "star-guard",
+          "url": "https://github.com/sky-ecosystem/star-guard.git",
+          "description": "Star guard governance verification"
+        },
+        {
+          "name": "chainlog-ui",
+          "url": "https://github.com/sky-ecosystem/chainlog-ui.git",
+          "description": "Chainlog UI for contract address registry"
+        },
+        {
+          "name": "megapoker",
+          "url": "https://github.com/sky-ecosystem/megapoker.git",
+          "description": "MegaPoker oracle poke aggregator"
+        },
+        {
+          "name": "pe-checklists",
+          "url": "https://github.com/sky-ecosystem/pe-checklists.git",
+          "description": "Protocol engineering review checklists"
+        },
+        {
+          "name": "dss-cron",
+          "url": "https://github.com/sky-ecosystem/dss-cron.git",
+          "description": "DSS cron job automation"
+        },
+        {
+          "name": "community",
+          "url": "https://github.com/sky-ecosystem/community.git",
+          "description": "Community resources and documentation"
+        }
+      ]
+    }
+  ]
+}

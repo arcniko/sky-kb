@@ -1,6 +1,6 @@
 # Sky Knowledge Base
 
-Local knowledge base for Sky governance documentation. Works with Claude Code and other AI coding agents.
+Knowledge base skill for Claude Code — search Sky Protocol governance and technical documentation using `/sky`.
 
 ## Requirements
 
@@ -13,56 +13,68 @@ Local knowledge base for Sky governance documentation. Works with Claude Code an
 **macOS / Linux:**
 
 ```bash
-git clone https://github.com/arcniko/sky-kb.git /tmp/sky-kb && cp -r /tmp/sky-kb/skills/* ~/.claude/skills/ && rm -rf /tmp/sky-kb
+git clone https://github.com/arcniko/sky-kb.git /tmp/sky-kb && mkdir -p ~/.claude/skills && cp -r /tmp/sky-kb/skills/* ~/.claude/skills/ && rm -rf /tmp/sky-kb
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-git clone https://github.com/arcniko/sky-kb.git $env:TEMP\sky-kb; Copy-Item -Recurse $env:TEMP\sky-kb\skills\* $HOME\.claude\skills\; Remove-Item -Recurse -Force $env:TEMP\sky-kb
+git clone https://github.com/arcniko/sky-kb.git $env:TEMP\sky-kb; New-Item -ItemType Directory -Force $HOME\.claude\skills | Out-Null; Copy-Item -Recurse $env:TEMP\sky-kb\skills\* $HOME\.claude\skills\; Remove-Item -Recurse -Force $env:TEMP\sky-kb
 ```
 
-**Manual (no terminal):**
+**Manual:**
 
 1. Download [`skills/sky/SKILL.md`](skills/sky/SKILL.md) from this repo
 2. Copy it into one of these locations:
    - `~/.claude/skills/sky/SKILL.md` — available in all projects
    - `<project>/.claude/skills/sky/SKILL.md` — available in one project
-   - `<project>/.agents/sky/SKILL.md` — for non-Claude agents
 
 Content is downloaded automatically on first use.
 
-## Content
-
-All content lives in `content/` and is fetched by the sync script:
-
-| Source | Path | Description |
-|--------|------|-------------|
-| **Sky Atlas** | `content/atlas/` | Full governance documentation — one markdown file per scope |
-| **Laniakea Docs** | `content/laniakea-docs/` | Current core work on the Sky Protocol |
-| **MCD Docs** | `content/mcd-docs-content/` | Maker Protocol technical documentation (older but foundational) |
-
-### Atlas Structure
-
-The Atlas files use a hierarchical heading structure with formal IDs (e.g. `A.1.2.3`) and document types in brackets (`[Scope]`, `[Article]`, `[Section]`, `[Core]`, etc.):
-
-| File | Description |
-|------|-------------|
-| `A.0 - Atlas Preamble.md` | Foundational definitions and general provisions |
-| `A.1 - The Governance Scope.md` | Core governance rules |
-| `A.2 - The Support Scope.md` | Support functions and services |
-| `A.3 - The Stability Scope.md` | Financial stability and risk |
-| `A.4 - The Protocol Scope.md` | Technical protocol governance |
-| `A.5 - The Accessibility Scope.md` | Accessibility standards |
-| `A.6 - The Agent Scope.md` | AI agent governance |
-
 ## Usage
 
-Use `/sky` from any project in Claude Code:
+```
+/sky <question>               Search the Sky knowledge base
+/sky sync                     Sync/update content
+/sky add repo <url>           Add a custom repo
+/sky remove repo <name>       Remove a custom repo
+```
+
+### First run
+
+The first time you run `/sky <question>`, the skill detects that it isn't set up yet and walks you through setup:
+
+1. Asks where to store the KB (default: `~/sky-kb`)
+2. Clones this repo
+3. Shows available categories — you pick which to include
+4. Syncs selected content
+5. Answers your question
+
+### Categories
+
+| Category | Repos | Description |
+|----------|-------|-------------|
+| **Laniakea (Core)** | 5 | Current core work on the Sky Protocol |
+| **Core Protocol** | 12 | Maker/Sky core smart contracts and modules |
+| **Migration** | 1 | Migration tools and contracts |
+| **Endgame / Staking** | 1 | Endgame toolkit and staking infrastructure |
+| **Keepers** | 2 | Keeper bots and automation |
+| **Governance** | 11 | Governance tools, spells, and community resources |
+
+The **Atlas** (Sky governance documentation from sky-atlas.io) is always included.
+
+## Architecture
 
 ```
-/sky What is the Stability Scope?
-/sky sync
-/sky add repo <url> [name] [description]
-/sky remove repo <name>
+~/.claude/skills/sky/SKILL.md    Skill file (registry + instructions)
+~/sky-kb/                        KB instance (cloned from this repo)
+  .kb_config.json                Config (selected categories, custom repos)
+  presets/sky.json                Preset definition (all available sources)
+  scripts/sync.py                Sync engine
+  content/                       Downloaded documentation (gitignored)
+    atlas/                       Sky Atlas markdown files
+    laniakea-docs/               Cloned repos...
+    mcd-docs-content/
+    ...
+  DIRECTORY.md                   Auto-generated content index
 ```
