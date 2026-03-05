@@ -93,7 +93,10 @@ Triggered automatically when the Registry section above says "Not configured yet
    ```bash
    python3 <kb-path>/scripts/sync.py --kb-path <kb-path>
    ```
-3. Report what was downloaded (Atlas files, repo status).
+3. Summarize concisely — only mention what changed:
+   - Atlas: "updated" or "already up to date"
+   - Repos: if ≤5 updated, list their names; if >5, just show the count (e.g. "12 repos updated")
+   - If nothing changed: "Everything up to date."
 4. If errors occurred, show them and suggest fixes.
 
 ---
