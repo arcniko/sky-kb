@@ -55,11 +55,13 @@ The first time you run `/sky <question>`, the skill detects that it isn't set up
 | Category | Repos | Description |
 |----------|-------|-------------|
 | **Laniakea (Core)** | 5 | Current core work on the Sky Protocol |
-| **Core Protocol** | 12 | Maker/Sky core smart contracts and modules |
+| **Core Protocol** | 13 | Maker/Sky core smart contracts and modules |
+| **Spark** | 5 | Spark Protocol lending and vaults (Sky Prime) |
+| **Grove** | 2 | Grove Protocol (Sky Prime) |
 | **Migration** | 1 | Migration tools and contracts |
 | **Endgame / Staking** | 1 | Endgame toolkit and staking infrastructure |
 | **Keepers** | 2 | Keeper bots and automation |
-| **Governance** | 11 | Governance tools, spells, and community resources |
+| **Governance** | 12 | Governance tools, spells, and community resources |
 
 The **Atlas** (Sky governance documentation from sky-atlas.io) is always included.
 

@@ -103,6 +103,60 @@
           "name": "dss-auto-line",
           "url": "https://github.com/sky-ecosystem/dss-auto-line.git",
           "description": "Automatic debt ceiling adjustment"
+        },
+        {
+          "name": "sky",
+          "url": "https://github.com/sky-ecosystem/sky.git",
+          "description": "Sky token and core protocol contracts"
+        }
+      ]
+    },
+    {
+      "id": "spark",
+      "name": "Spark",
+      "description": "Spark Protocol lending and vaults (Sky Prime)",
+      "repos": [
+        {
+          "name": "spark-address-registry",
+          "url": "https://github.com/sparkdotfi/spark-address-registry.git",
+          "description": "Spark contract address registry"
+        },
+        {
+          "name": "spark-vaults-v2",
+          "url": "https://github.com/sparkdotfi/spark-vaults-v2.git",
+          "description": "Spark Vaults v2 contracts"
+        },
+        {
+          "name": "spark-audits",
+          "url": "https://github.com/sparkdotfi/spark-audits.git",
+          "description": "Spark security audit reports"
+        },
+        {
+          "name": "spark-spells",
+          "url": "https://github.com/sparkdotfi/spark-spells.git",
+          "description": "Spark governance spell contracts"
+        },
+        {
+          "name": "sparklend-v1-core",
+          "url": "https://github.com/sparkdotfi/sparklend-v1-core.git",
+          "description": "SparkLend v1 core lending contracts"
+        }
+      ]
+    },
+    {
+      "id": "grove",
+      "name": "Grove",
+      "description": "Grove Protocol (Sky Prime)",
+      "repos": [
+        {
+          "name": "grove-address-registry",
+          "url": "https://github.com/grove-labs/grove-address-registry.git",
+          "description": "Grove contract address registry"
+        },
+        {
+          "name": "grove-spells",
+          "url": "https://github.com/grove-labs/grove-spells.git",
+          "description": "Grove governance spell contracts"
         }
       ]
     },
@@ -206,6 +260,11 @@
           "name": "community",
           "url": "https://github.com/sky-ecosystem/community.git",
           "description": "Community resources and documentation"
+        },
+        {
+          "name": "mips",
+          "url": "https://github.com/sky-ecosystem/mips.git",
+          "description": "Maker Improvement Proposals (historical governance process)"
         }
       ]
     }
