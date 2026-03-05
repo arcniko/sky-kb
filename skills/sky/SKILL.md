@@ -29,20 +29,26 @@ Parse the user's input to determine the subcommand:
 
 Triggered automatically when the Registry section above says "Not configured yet" and the user runs any command.
 
-1. **Ask where to store the KB** — suggest `~/sky-kb` as default. Accept the user's answer.
+1. **Ask where to store the KB** using AskUserQuestion — suggest `~/sky-kb` as the default (with the user's actual home directory expanded). Let the user pick or type a custom path.
 
 2. **Clone the repo** if the path doesn't exist:
    ```bash
    git clone https://github.com/arcniko/sky-kb.git <path>
    ```
 
-3. **Read the preset** — load `<path>/presets/sky.json`. Show the user the available categories with descriptions and repo counts as a numbered list.
+3. **Ask which bundle** to install using AskUserQuestion with these options:
+   - **All (Recommended)** — all categories + Atlas (~41 repos). "Full picture: governance, technical, everything."
+   - **Core** — Atlas + protocol docs + core contracts (~18 repos). "Essential protocol documentation."
+   - **Technical** — Core + Spark, Grove, keepers, migration, endgame (~29 repos). "Developer-focused: all code repos, skip governance/community."
 
-4. **Ask which categories to include** — let the user pick by number. Default: all categories.
+4. **Map the bundle to category IDs**:
+   - All → `["laniakea", "core-protocol", "spark", "grove", "migration", "endgame", "keepers", "governance"]`
+   - Core → `["laniakea", "core-protocol"]`
+   - Technical → `["laniakea", "core-protocol", "spark", "grove", "migration", "endgame", "keepers"]`
 
 5. **Write `<path>/.kb_config.json`**:
    ```json
-   {"preset": "sky", "categories": ["cat1", "cat2"], "custom_repos": [], "atlas": true}
+   {"preset": "sky", "categories": [...selected IDs...], "custom_repos": [], "atlas": true}
    ```
 
 6. **Update the Registry section** in this SKILL.md — replace the placeholder text with `<path>` using the Edit tool.
