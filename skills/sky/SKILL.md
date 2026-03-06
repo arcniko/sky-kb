@@ -2,7 +2,7 @@
 name: sky
 description: Answer a question about Sky governance using the local knowledge base
 argument-hint: <question> | sync | add repo <url> | remove repo <name>
-allowed-tools: Grep(*), Read(*), Edit(*), Write(*), Bash(git *), Bash(python3 *), Bash(test *), Bash(rm -rf *), Bash(mkdir *), Bash(ls *)
+allowed-tools: Grep(*), Read(*), Edit(*), Write(*), Bash(git *), Bash(python3 *), Bash(test *), Bash(rm -rf *), Bash(mkdir *), Bash(ls *), WebFetch(domain:sky-forum-proxy.skynav.workers.dev)
 ---
 
 # Sky Knowledge Base
@@ -78,10 +78,17 @@ Triggered automatically when the Registry section above says "Not configured yet
 
 7. For smart contract address lookups: read `<kb-path>/content/chainlog-ui/api/mainnet/active.json` — this is the live chainlog with all current contract addresses.
 
+8. **Search the forum** — if local KB results are incomplete, or the question is about governance discussions/proposals/community sentiment, also search the Sky forum:
+   - Use WebFetch to call `https://sky-forum-proxy.skynav.workers.dev/search?q=<query>&max=5` with prompt "Return the raw JSON"
+   - If a topic looks highly relevant, fetch full content: `https://sky-forum-proxy.skynav.workers.dev/topic/<id>` with prompt "Return the raw JSON"
+   - Skip if local KB already provides a complete, authoritative answer
+
 ### How to answer
 
 - Be specific and cite your sources (Atlas formal ID like `A.1.2.3`, or file path for repo docs)
 - Quote relevant passages when helpful
+- When citing forum results, include the topic title and link to the discussion
+- Forum posts are community discussion, not official protocol policy — note this distinction when relevant
 - If the content doesn't contain an answer, say so clearly
 
 ---
