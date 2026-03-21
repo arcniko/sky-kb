@@ -10,7 +10,7 @@ npx skills add arcniko/sky-kb
 
 Or copy [`skills/sky/SKILL.md`](skills/sky/SKILL.md) into your agent's skills directory (e.g. `~/.claude/skills/sky/SKILL.md` for Claude Code).
 
-Content is downloaded automatically on first use.
+Content is downloaded automatically on first use. Forum discussions from [forum.sky.money](https://forum.sky.money) are searched live when relevant.
 
 ## Usage
 
