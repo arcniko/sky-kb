@@ -81,6 +81,7 @@ Triggered automatically when the Registry section above says "Not configured yet
 8. **Search the forum** — if local KB results are incomplete, or the question is about governance discussions/proposals/community sentiment, also search the Sky forum:
    - Use WebFetch to call `https://sky-forum-proxy.skynav.workers.dev/search?q=<query>&max=5` with prompt "Return the raw JSON"
    - If a topic looks highly relevant, fetch full content: `https://sky-forum-proxy.skynav.workers.dev/topic/<id>` with prompt "Return the raw JSON"
+   - For "latest", "recent", or "what's new" questions: call `https://sky-forum-proxy.skynav.workers.dev/latest?max=5` first, then fetch full content for the most relevant topics via `/topic/<id>`
    - Skip if local KB already provides a complete, authoritative answer
 
 ### How to answer
