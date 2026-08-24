@@ -74,7 +74,7 @@ Triggered automatically when the Registry section above says "Not configured yet
 
 5. For Atlas results: also read the parent scope file for broader context.
 
-6. For protocol questions: prioritize `laniakea-docs` (current), then `mcd-docs-content` (legacy).
+6. For protocol questions: check whether the question is about the **live system** or the **planned one** — see [Deployed vs. planned](#deployed-vs-planned) below. `laniakea-docs` describes a future architecture and must not be presented as current behaviour. For "how does X work today", ground the answer in the chainlog, the contract repos, and what governance has actually executed (`spells-mainnet`, `spark-spells`, `executive-votes`). Use `mcd-docs-content` for legacy background.
 
 7. For smart contract address lookups: read `<kb-path>/content/chainlog-ui/api/mainnet/active.json` — this is the live chainlog with all current contract addresses.
 
@@ -82,7 +82,49 @@ Triggered automatically when the Registry section above says "Not configured yet
    - Use WebFetch to call `https://sky-forum-proxy.skynav.workers.dev/search?q=<query>&max=5` with prompt "Return the raw JSON"
    - If a topic looks highly relevant, fetch full content: `https://sky-forum-proxy.skynav.workers.dev/topic/<id>` with prompt "Return the raw JSON"
    - For "latest", "recent", or "what's new" questions: call `https://sky-forum-proxy.skynav.workers.dev/latest?max=5` first, then fetch full content for the most relevant topics via `/topic/<id>`
+   - **Always prefer the newest thread on a subject** — see [Forum recency](#forum-recency) below
    - Skip if local KB already provides a complete, authoritative answer
+
+### Forum recency
+
+Sky's forum has years of threads on the same recurring subjects — debt ceilings, rate changes, allocator parameters, risk assessments — each superseding the last. **The oldest match is usually the wrong answer.** A thread can also be from the MakerDAO era and use retired terminology (MIPs, DAI, Maker branding) for a mechanism that still exists under a different name.
+
+`/search` ranks by relevance, **not** recency, and returns no dates. Recover recency like this:
+
+- **Topic ID is monotonic — higher id means newer.** This is the main signal available on search results. For calibration: id ~22,000 is Maker-era (2023), ~26,100 is early 2025, ~27,600 is January 2026, ~28,160 is August 2026.
+- **Many titles carry an explicit date**, e.g. `[Jan 15, 2026] Parameter Changes - Grove Allocator Vault`. Use it when present.
+- **Only `/latest` returns real timestamps** (`created_at`, `last_posted_at`, `posts_count`). `/topic/<id>` returns just `title`, `url`, and `posts` with `username` + `content` — no dates. So a single topic fetch cannot tell you how old it is; judge from the id and the title.
+
+Rules:
+
+- Sort candidate topics by id descending and read the newest relevant one **first**. Only reach for older threads for history, or when the newest doesn't cover the question.
+- If old and new threads conflict, the newer wins — and say the parameter or policy changed rather than presenting the stale value.
+- **Never quote a number** (rate, ceiling, cap, fee) from an old thread as current. Confirm it against the newest thread, the chainlog, or `executive-votes`, which record what was actually enacted.
+- Date what you cite: give the thread's date or note it is older discussion, so the reader can judge staleness.
+
+### Deployed vs. planned
+
+**`content/laniakea-docs/` is a forward-looking design corpus, not a description of the live system.** Its own README calls Laniakea "a comprehensive infrastructure overhaul rolling out through 2026" and states "These documents are drafts under active development."
+
+The vocabulary it defines is largely **unbuilt**: Generator, PAU, Prime PAU, Halo, Folio, Sentinel Network, beacons, teleonomes, synomes, LCTS, NFATs, TEJRC / TISRC / srUSDS, the daily settlement cycle. The mainnet chainlog contains **no** `GENERATOR`, `PRIME`, or `HALO` entries. Reading these docs as current behaviour produces confidently wrong answers.
+
+What is actually live for the same functions:
+
+| Laniakea term | Live mechanism today |
+|---|---|
+| Generator creating USDS | The **Allocation System** — per-agent allocator ilks (`ALLOCATOR-SPARK-A`, `ALLOCATOR-GROVE-A`, …) in the vat |
+| Prime PAU | `ALLOCATOR_<NAME>_A_VAULT` + `_BUFFER`, wired by `dss-allocator`'s `AllocatorInit.initIlk` |
+| Prime credit line | The ilk debt ceiling (`line`), managed by DC-IAM / `MCD_IAM_AUTO_LINE` |
+| Rate-limited capital flow | ALM controller rate limits in the Spark / Grove liquidity layers, separate from the vat ceiling |
+| Daily settlement cycle | The **Monthly** Settlement Cycle, executed by executive spell |
+
+Rules:
+
+- **Never state Laniakea mechanics as how the protocol works now.** If asked how something works today, answer from live sources first; mention Laniakea only as the direction of travel, explicitly labelled as planned.
+- **Label which is which.** When both exist, give the live mechanism and name the Laniakea successor separately.
+- **Verify a contract exists before asserting it does** — `content/chainlog-ui/api/mainnet/active.json` is ground truth for what is deployed.
+- **`content/laniakea-docs/inactive/`** is superseded even within the Laniakea corpus. Treat it as historical drafts, not as a fallback.
+- **Atlas** (`content/atlas/`) is ratified governance policy and mostly binds today, but it contains forward-looking articles too. Check whether an article describes an active process before relying on it. Atlas uses "Prime Agent" for what Laniakea calls a "Prime".
 
 ### How to answer
 
@@ -90,6 +132,8 @@ Triggered automatically when the Registry section above says "Not configured yet
 - Quote relevant passages when helpful
 - When citing forum results, include the topic title and link to the discussion
 - Forum posts are community discussion, not official protocol policy — note this distinction when relevant
+- Prefer the newest forum thread on a subject and date what you cite, per [Forum recency](#forum-recency) above
+- Distinguish deployed behaviour from planned architecture, per [Deployed vs. planned](#deployed-vs-planned) above. If an answer rests on `laniakea-docs`, say so and say it is not live yet
 - If the content doesn't contain an answer, say so clearly
 
 ---
